@@ -3,9 +3,8 @@ name: CI
 on:
   push:
     branches: [ "main" ]
-    
-jobs:
 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -16,6 +15,12 @@ jobs:
       with: 
         go-version: '1.25.1'
         check-latest: true
+
+    - name: Install dependencies
+      run: go mod tidy
+
+    - name: Format code
+      run: go fmt ./...
 
     - name: Build
       run: go build -v ./...
