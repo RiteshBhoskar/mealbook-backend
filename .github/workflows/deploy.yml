@@ -21,15 +21,18 @@ jobs:
                  go mod tidy
                  cd cmd/api
                  GOOS=linux GOARCH=amd64 go build -o mealbook
-            
+        
+            - name: Move binary to root for Upload
+              run: mv cmd/api/mealbook ./mealbook
+
             - name: Upload to EC2
               uses: appleboy/scp-action@v0.1.4
               with:
                   host: ${{ secrets.EC2_HOST }}
                   username: ${{ secrets.EC2_USER }}
                   key: ${{ secrets.EC2_SSH_KEY }}
-                  source: "cmd/api/mealbook"
-                  target: "/usr/local/bin/"
+                  source: "mealbook"
+                  target: "/home/${{ secrets.EC2_USER }}/mealbook
                   strip_components: 2
 
             - name: Restart Systemd Service
