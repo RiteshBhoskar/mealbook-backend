@@ -10,7 +10,7 @@ func main() {
 	r := gin.Default()
 	r.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
-			"message": "server running on 8080",
+			"message": "server running on 8080, deployed via ssm",
 		})
 	})
 	r.Run(":8080")
