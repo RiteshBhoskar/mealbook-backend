@@ -29,6 +29,7 @@ jobs:
             - name: Build and Push Docker Image
               uses: docker/build-push-action@v4
               with:
-                  context: ./infra/docker
+                  context: .
+                  file: ./infra/docker/Dockerfile
                   push: true
                   tags: ${{ vars.DOCKERHUB_USERNAME }}/mealbook:latest
