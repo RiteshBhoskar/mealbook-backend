@@ -38,4 +38,6 @@ jobs:
                   file: ./infra/docker/Dockerfile
                   platforms: linux/amd64,linux/arm64
                   push: true
-                  tags: ${{ vars.DOCKERHUB_USERNAME }}/mealbook:latest
+                  tags: |
+                        ${{ vars.DOCKERHUB_USERNAME }}/mealbook:latest
+                        ${{ vars.DOCKERHUB_USERNAME }}/mealbook:${{ github.sha }}
