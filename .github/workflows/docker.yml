@@ -3,10 +3,10 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ "main" ]
-    # paths:
-    #     - "infra/docker/**"
-        #   - "go.mod"
-        #   - "go.sum"
+    paths:
+        - "infra/docker/**"
+        - "go.mod"
+        - "go.sum"
 
 permissions:
     contents: read
