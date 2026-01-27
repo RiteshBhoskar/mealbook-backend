@@ -2,3 +2,4 @@
 infra
 .env
 .gitignore
+*.log
